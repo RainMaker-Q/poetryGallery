@@ -36,10 +36,10 @@ async function getPoemDetail(id: string): Promise<PoemDetail | null> {
 export default async function PoemDetailPage({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
-  const poem = await getPoemDetail(params.id);
   const { id } = await params;
+  const poem = await getPoemDetail(id);
 
   const imgIdx = Number(id) % PoetryDetailPageImageList.length;
   const imgUrl = PoetryDetailPageImageList[imgIdx];
